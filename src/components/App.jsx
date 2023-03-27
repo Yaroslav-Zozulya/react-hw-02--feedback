@@ -12,9 +12,9 @@ export class App extends Component {
   };
   btnClickHandle = e => {
     this.setState(prevState => {
+      const key = e.target.textContent.toLowerCase();
       return {
-        [e.target.textContent.toLowerCase()]:
-          prevState[e.target.textContent.toLowerCase()] + 1,
+        [key]: prevState[key] + 1,
       };
     });
   };

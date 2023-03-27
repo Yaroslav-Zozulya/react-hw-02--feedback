@@ -1,15 +1,24 @@
-import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
-    <div>
+    <ul>
       {Object.keys(options).map(option => (
-        <button key={option} onClick={onLeaveFeedback}>
-          {option}
-        </button>
+        <li key={option}>
+          <button onClick={onLeaveFeedback}>{option}</button>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 
 export default FeedbackOptions;
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.shape({
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+  }).isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
+};
